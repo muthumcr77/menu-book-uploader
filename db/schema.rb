@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_220941) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_16_084203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,17 +42,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_220941) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "restaurant_menu_item_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "restaurant_menu_items", force: :cascade do |t|
     t.string "dish_name"
     t.string "dish_desc"
     t.integer "dish_type"
     t.string "allergens"
-    t.string "category"
     t.integer "price"
     t.bigint "restaurant_menu_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_menu_item_category_id", null: false
     t.index ["restaurant_menu_id"], name: "index_restaurant_menu_items_on_restaurant_menu_id"
+    t.index ["restaurant_menu_item_category_id"], name: "index_restaurant_menu_items_on_restaurant_menu_item_category_id"
   end
 
   create_table "restaurant_menus", force: :cascade do |t|
@@ -70,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_220941) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "restaurant_menu_items", "restaurant_menu_item_categories"
   add_foreign_key "restaurant_menu_items", "restaurant_menus"
   add_foreign_key "restaurant_menus", "restaurants"
 end

@@ -1,0 +1,2 @@
+class RestaurantMenuItemCategory < ApplicationRecord
+end
