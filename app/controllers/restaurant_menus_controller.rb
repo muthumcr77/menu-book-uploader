@@ -4,7 +4,7 @@ class RestaurantMenusController < ApplicationController
   before_action :load_restaurant
 
   def index
-    @restaurant_menu = @restaurant.restaurant_menus.last
+    @restaurant_menu = @restaurant.restaurant_menus.last rescue []
   end
 
   def new
@@ -17,14 +17,14 @@ class RestaurantMenusController < ApplicationController
       # redirect to file being processed page to display menu
       redirect_to root_path, notice: "Your menu is being processed"
     else
-      flash[:alert] = "Error! Try again."
+      flash[:alert] = "Wrong format! Try again."
       render :new
     end
   end
 
   private
   def restaurant_menu_params
-    params.require(:restaurant_menu).permit(:menu_file)
+    params.permit(:menu_file)
   end
 
   def load_restaurant
