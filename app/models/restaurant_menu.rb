@@ -5,7 +5,8 @@ class RestaurantMenu < ApplicationRecord
 
   # ASSOCIATIONS
   belongs_to :restaurant
-  has_many :restaurant_menu_items
+  has_many :restaurant_menu_item_categories, dependent: :destroy
+  has_many :restaurant_menu_items, through: :restaurant_menu_item_categories
 
   # ATTACHMENTS
   has_one_attached :menu_file
