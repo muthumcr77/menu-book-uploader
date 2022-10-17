@@ -36,3 +36,5 @@
 
 /dump.rdb
 /config/database.yml
+
+node_modules/
