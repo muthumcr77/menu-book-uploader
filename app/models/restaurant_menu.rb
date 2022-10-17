@@ -3,6 +3,9 @@ class RestaurantMenu < ApplicationRecord
   # Valid file formats
   FILE_TYPES = ['text/csv', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']
 
+  # JOB STATUS
+  enum :status, [:loading, :success]
+
   # ASSOCIATIONS
   belongs_to :restaurant
   has_many :restaurant_menu_item_categories, dependent: :destroy
