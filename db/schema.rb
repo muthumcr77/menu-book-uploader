@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_064959) do
     t.string "dish_name"
     t.string "dish_desc"
     t.integer "dish_type"
-    t.string "allergens"
+    t.string "allergens", default: ""
     t.integer "price"
     t.bigint "restaurant_menu_id", null: false
     t.datetime "created_at", null: false
