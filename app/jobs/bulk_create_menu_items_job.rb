@@ -24,7 +24,7 @@ class BulkCreateMenuItemsJob < ApplicationJob
           {
             dish_name: row[:dish_name],
             dish_desc: row[:dish_description],
-            dish_type:,
+            dish_type: dish_type,
             allergens: row[:allergens] || "",
             price: row[:price].to_i,
             restaurant_menu_id: @restaurant_menu.id,

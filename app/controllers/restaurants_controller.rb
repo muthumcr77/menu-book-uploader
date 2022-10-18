@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       # redirect restaurant menu upload path here
-      redirect_to restaurants_path, notice: "New restaurant #{@restaurant.name} created successfully!"
+      redirect_to restaurant_new_menu_path(@restaurant.id), notice: "New restaurant #{@restaurant.name} created successfully!"
     else
       render :new
     end
