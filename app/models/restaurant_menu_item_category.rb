@@ -6,5 +6,5 @@ class RestaurantMenuItemCategory < ApplicationRecord
 
   # VALIDATIONS
   validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: [:restaurant_menu_id] }
 end

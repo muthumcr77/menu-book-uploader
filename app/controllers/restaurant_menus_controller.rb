@@ -4,15 +4,15 @@ class RestaurantMenusController < ApplicationController
   before_action :load_restaurant
 
   def index
-    @restaurant_menu = @restaurant.restaurant_menus.last rescue []
+    @restaurant_menu = @restaurant.restaurant_menu rescue []
   end
 
   def new
-    @restaurant_menu = @restaurant.restaurant_menus.new
+    @restaurant_menu = RestaurantMenu.new
   end
 
   def create
-    @restaurant_menu = @restaurant.restaurant_menus.new(restaurant_menu_params)
+    @restaurant_menu = RestaurantMenu.new(restaurant_menu_params)
     if @restaurant_menu.save
       # redirect to file being processed page to display menu
       BulkCreateMenuItemsJob.perform_now @restaurant_menu.id
@@ -23,9 +23,14 @@ class RestaurantMenusController < ApplicationController
     end
   end
 
+  def show
+    @restaurant_menu = @restaurant.restaurant_menu
+    @restaurant_menu_items = @restaurant_menu.restaurant_menu_items.order(dish_type: :desc)
+  end
+
   private
   def restaurant_menu_params
-    params.permit(:menu_file)
+    params.permit(:menu_file, :restaurant_id)
   end
 
   def load_restaurant
