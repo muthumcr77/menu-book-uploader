@@ -1,1 +1,11 @@
-<%= select_tag :restaurant, options_from_collection_for_select(@restaurants, "id", "name", 1) %>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Pick Restaurant
+  </button>
+  <ul class="dropdown-menu">
+    <% @restaurants.each do |restaurant| %>
+      <li><a class="dropdown-item" href="/restaurants/<%= restaurant.id %>/restaurant_menus"><%= restaurant.name %></a></li>
+    <% end %>
+    <li><a class="dropdown-item text-danger" href="/restaurants/new">Create new restaurant</a></li>      
+  </ul>
+</div>

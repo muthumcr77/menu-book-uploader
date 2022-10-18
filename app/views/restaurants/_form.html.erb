@@ -11,7 +11,10 @@
 <% end %>
 
 <%= form_with model: @restaurant do |form| %>
-  <%= form.label :restaurant_name %>
-  <%= form.text_field :name %>
-  <%= form.submit 'Submit' %>
+  <div class="col-sm-10">
+    <label class="form-label">Restaurant Name</label>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <br>
+  <%= form.submit 'Create', class: "btn btn-danger" %>
 <% end %>

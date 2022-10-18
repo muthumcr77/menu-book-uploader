@@ -16,7 +16,7 @@ class RestaurantMenusController < ApplicationController
     if @restaurant_menu.save
       # redirect to file being processed page to display menu
       BulkCreateMenuItemsJob.perform_now @restaurant_menu.id
-      redirect_to root_path, notice: "Your menu is being processed"
+      redirect_to restaurant_restaurant_menus_show_path(@restaurant.id), notice: "Your menu is being processed..."
     else
       flash[:alert] = "Wrong format! Try again."
       render :new

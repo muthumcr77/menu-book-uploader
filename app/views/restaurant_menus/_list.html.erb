@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Dish Name</th>
+      <th scope="col">Dish Description</th>
+      <th scope="col">Dish Type</th>
+      <th scope="col">Allergens</th>
+      <th scope="col">Category</th>
+      <th scope="col">Cost(&#8377;)</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% items.each do |i| %>
+    <tr>
+      <td><%= i.dish_name %></td>
+      <td><%= i.dish_desc %></td>
+      <td><%= i.non_veg? ? "Non-Vegetarian" : "Vegetarian" %></td>
+      <td><%= i.allergens.empty? ? "-" : i.allergens %></td>
+      <td><%= i.restaurant_menu_item_category.name %></td>
+      <td><%= i.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

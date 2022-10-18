@@ -1,2 +1,15 @@
-<h3>Restaurant Menu</h3>
-<%= render "menu_items" %>
+<center>
+<div class="mt-5 w-25 d-flex flex-column">
+  <% if @restaurant_menu.nil? %>
+    <%= link_to "Create new menu", restaurant_new_menu_path(@restaurant.id), class: 'btn btn-primary' %><br>
+  <% else %>
+    <% if @restaurant_menu.menu_file.attached? %>
+      <% unless @restaurant_menu.success? %>
+        <h5>Menu is being processed...</h5>
+      <% else %>
+        <%= link_to "View Menu", restaurant_restaurant_menus_show_path(@restaurant.id), class: 'btn btn-success' %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+</center>

@@ -11,9 +11,13 @@
   </head>
 
   <body>
+    <%= render "layouts/navbar" %>
     <% if flash.any? %>
       <% flash.each do |type, msg| %>
-        <div><%= msg %></div>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+          <%= msg %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       <% end %>
     <% end %>
     <%= yield %>

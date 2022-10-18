@@ -10,9 +10,11 @@
   </div>
 <% end %>
 
-<%= form_with url: restaurant_restaurant_menus_new_path do |form| %>
-  <%= form.label :menu_file %><br>
-  <%= form.file_field :menu_file %>
-  <br>
-  <%= form.submit 'Upload' %>
-<% end %>
+  <%= form_with url: restaurant_restaurant_menus_new_path do |form| %>
+    <div class="col-sm-10">
+      <label class="form-label">Menu File</label>
+      <%= form.file_field :menu_file, class: "form-control" %>
+    </div>
+    <br>
+    <%= form.submit 'Upload', class: "btn btn-danger" %>
+  <% end %>

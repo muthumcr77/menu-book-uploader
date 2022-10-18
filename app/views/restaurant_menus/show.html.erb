@@ -1,0 +1,11 @@
+<% unless @restaurant_menu.success? %>
+  <div class="my-5 d-flex">
+    <h1>Menu is being processed. Please try again in some time...</h1>
+  </div>
+<% else %>
+  <br>
+  <center><u><h3>Menu Items</h3></u></center>
+  <div class="container-fluid my-3">
+    <%= render "list", items: @restaurant_menu_items %>
+  </div>
+<% end %>
