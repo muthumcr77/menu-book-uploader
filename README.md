@@ -10,5 +10,6 @@ gem install foreman
 bin/setup
 foreman start -f Procfile.dev
 ```
+Go to `http://localhost:3000/` to access the application
 
 
