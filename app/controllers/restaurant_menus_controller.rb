@@ -1,5 +1,6 @@
-class RestaurantMenusController < ApplicationController
+# frozen_string_literal: true
 
+class RestaurantMenusController < ApplicationController
   # CALLBACKS
   before_action :load_restaurant
 
@@ -29,11 +30,12 @@ class RestaurantMenusController < ApplicationController
   end
 
   private
-  def restaurant_menu_params
-    params.permit(:menu_file, :restaurant_id)
-  end
 
-  def load_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
-  end
+    def restaurant_menu_params
+      params.permit(:menu_file, :restaurant_id)
+    end
+
+    def load_restaurant
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    end
 end

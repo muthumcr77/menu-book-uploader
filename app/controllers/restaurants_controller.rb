@@ -1,5 +1,6 @@
-class RestaurantsController < ApplicationController
+# frozen_string_literal: true
 
+class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all rescue []
   end
@@ -19,7 +20,8 @@ class RestaurantsController < ApplicationController
   end
 
   private
-  def restaurant_params
-    params.require(:restaurant).permit(:name)
-  end
+
+    def restaurant_params
+      params.require(:restaurant).permit(:name)
+    end
 end

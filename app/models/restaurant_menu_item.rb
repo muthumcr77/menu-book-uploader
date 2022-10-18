@@ -1,5 +1,6 @@
-class RestaurantMenuItem < ApplicationRecord
+# frozen_string_literal: true
 
+class RestaurantMenuItem < ApplicationRecord
   # FOOD TYPE
   enum :dish_type, [:non_veg, :veg]
 

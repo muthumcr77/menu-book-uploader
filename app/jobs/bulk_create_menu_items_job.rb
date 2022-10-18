@@ -1,4 +1,6 @@
-require 'csv'
+# frozen_string_literal: true
+
+require "csv"
 
 class BulkCreateMenuItemsJob < ApplicationJob
   sidekiq_options queue: "default"
@@ -20,13 +22,13 @@ class BulkCreateMenuItemsJob < ApplicationJob
         row[:dish_type].downcase.include?("non-veg") ? dish_type = 0 : dish_type = 1
         restaurant_menu_item = RestaurantMenuItem.create!(
           {
-            :dish_name => row[:dish_name],
-            :dish_desc => row[:dish_description],
-            :dish_type => dish_type,
-            :allergens => row[:allergens] || "",
-            :price => row[:price].to_i,
-            :restaurant_menu_id => @restaurant_menu.id,
-            :restaurant_menu_item_category_id => category.id
+            dish_name: row[:dish_name],
+            dish_desc: row[:dish_description],
+            dish_type:,
+            allergens: row[:allergens] || "",
+            price: row[:price].to_i,
+            restaurant_menu_id: @restaurant_menu.id,
+            restaurant_menu_item_category_id: category.id
           }
         )
         puts "Error creating record! Please check again." unless restaurant_menu_item.present?

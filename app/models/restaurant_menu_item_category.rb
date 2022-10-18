@@ -1,5 +1,6 @@
-class RestaurantMenuItemCategory < ApplicationRecord
+# frozen_string_literal: true
 
+class RestaurantMenuItemCategory < ApplicationRecord
   # ASSOCIATIONS
   belongs_to :restaurant_menu
   has_many :restaurant_menu_items, dependent: :destroy
